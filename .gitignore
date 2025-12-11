@@ -1,0 +1,18 @@
+# Local .terraform folders
+.terraform/
+
+# Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+
+# Crash log files
+crash.log
+
+# Ignore sensitive variable files
+*.tfvars
+
+# Ignore key files
+*.pem
+
+# CLI metadata
+.terraform.lock.hcl
