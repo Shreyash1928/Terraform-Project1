@@ -1,19 +1,21 @@
 🚀 Terraform AWS EC2 Deployment (Beginner Project)
 
 This project demonstrates how to deploy an Amazon EC2 instance on AWS using Terraform.
-It is a beginner-friendly Infrastructure-as-Code (IaC) project that shows how to automate cloud resources, manage configurations, and create reusable Terraform modules.
+It is a beginner-friendly Infrastructure-as-Code (IaC) project that teaches cloud automation, resource provisioning, and writing reusable Terraform configurations.
 
 📌 Project Overview
 
-Using Terraform, we automated the provisioning of:
+Using Terraform, this project provisions:
 
-An EC2 instance (Amazon Linux 2)
+✔️ Amazon EC2 instance (Amazon Linux 2)
 
-A Security Group (allowing SSH + HTTP)
+✔️ Security Group allowing SSH (22) and HTTP (80)
 
-Automatic public IP assignment
+✔️ Automatic public IP assignment
 
-NGINX installation using user_data script
+✔️ NGINX installation using user_data
+
+✔️ AWS resources deployed in ap-south-1 (Mumbai)
 
 🏗️ Terraform Resources Used
 
@@ -21,7 +23,7 @@ aws_instance
 
 aws_security_group
 
-aws_ami (data source)
+aws_ami (data source lookup)
 
 aws_vpc (default VPC)
 
@@ -36,7 +38,7 @@ terraform-ec2/
 
 ⚙️ Prerequisites
 
-Before running this project:
+Before running this project, ensure you have:
 
 AWS account
 
@@ -44,32 +46,43 @@ IAM user with:
 
 Programmatic access
 
-Access keys
+Access keys (created from IAM → Security Credentials → Access Keys)
 
-AWS CLI configured using:
+AWS CLI installed
+
+Terraform installed
+
+A key pair generated in AWS
+
+Region set to ap-south-1 (Asia Pacific – Mumbai)
+
+Configure AWS CLI:
 
 aws configure
 
-Terraform installed on your system
-
-A key pair (PEM file) stored on your machine
-
-Provider region set to ap-south-1 (Mumbai)
-
 🚀 How to Run This Project
-1. Initialize Terraform :
+1️⃣ Initialize Terraform
 terraform init
 
+2️⃣ Validate
 terraform validate
 
+3️⃣ Preview the infrastructure
 terraform plan
 
+4️⃣ Apply (Deploy EC2 Instance)
 terraform apply -auto-approve
 
+5️⃣ Destroy (Optional)
 terraform destroy
 
 🔐 SSH into the EC2 Instance
 ssh -i ~/.ssh/devops-key.pem ec2-user@<PUBLIC_IP>
+
+
+Make sure your PEM file has correct permissions:
+
+chmod 400 ~/.ssh/devops-key.pem
 
 🌐 Check NGINX Installation
 
@@ -86,12 +99,16 @@ Hello from Terraform EC2 - <hostname>
 
 Terraform basics (providers, resources, variables, outputs)
 
-Managing AWS infrastructure using IaC
+How to launch EC2 using IaC
 
-Debugging subnet, VPC, AMI, and permissions issues
+Using data sources to fetch AMIs dynamically
 
-Using user_data to automate server configuration
+AWS IAM, EC2, Security Groups, Key Pairs
 
-Writing maintainable Terraform code
+Writing clean Terraform project structure
 
-Connecting Terraform with AWS CLI
+Installing NGINX using user_data
+
+Troubleshooting AWS permissions, VPC, and subnet issues
+
+How Terraform interacts with AWS CLI credentials
